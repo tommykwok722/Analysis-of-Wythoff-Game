@@ -1,4 +1,5 @@
 # Analysis-of-Wythoff-Game
+A MATLAB program related to Wythoff’s Game.
 
 ## Background
 Wythoff’s Game[^1] is a two-player subtraction game[^2]. The following are the rules and setup of the game:
@@ -30,7 +31,7 @@ chips in the 1<sup>st</sup> and the 2<sup>nd</sup> pile.
 **Step 1:** Terminal position $(0,0)$ is a **P-position** by ***Rule 1***
 |       | **0** | **1** | **2** | **3** | **4** | **5** |
 |-------|-------|-------|-------|-------|-------|-------|
-| **0** |  *P*  |       |       |       |       |       |
+| **0** |***P***|       |       |       |       |       |
 | **1** |       |       |       |       |       |       |
 | **2** |       |       |       |       |       |       |
 | **3** |       |       |       |       |       |       |
@@ -39,20 +40,38 @@ chips in the 1<sup>st</sup> and the 2<sup>nd</sup> pile.
 **Step 2:** $(0,x)$, $(x,0)$ and $(x,x)$ are **N-positions** by ***Rule 2***. These positions can move to $(0,0)$, which is a **P-position**
 |       | **0** | **1** | **2** | **3** | **4** | **5** |
 |-------|-------|-------|-------|-------|-------|-------|
-| **0** |  *P*  |  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |
+| **0** |***P***|  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |
 | **1** |  *N*  |  *N*  |       |       |       |       |
 | **2** |  *N*  |       |  *N*  |       |       |       |
 | **3** |  *N*  |       |       |  *N*  |       |       |
 | **4** |  *N*  |       |       |       |  *N*  |       |
 
-**Step 3:** $(0,x)$, $(x,0)$ and $(x,x)$ are **N-positions** by ***Rule 2***. These positions can move to $(0,0)$, which is a **P-position**
+**Step 3:** $(1,2)$ and $(2,1)$ are **P-positions** by ***Rule 3***. These positions can **ONLY** move to a **N-position**
 |       | **0** | **1** | **2** | **3** | **4** | **5** |
 |-------|-------|-------|-------|-------|-------|-------|
-| **0** |  *P*  |  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |
-| **1** |  *N*  |  *N*  |       |       |       |       |
-| **2** |  *N*  |       |  *N*  |       |       |       |
+| **0** |***P***|  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |
+| **1** |  *N*  |  *N*  |***P***|       |       |       |
+| **2** |  *N*  |***P***|  *N*  |       |       |       |
 | **3** |  *N*  |       |       |  *N*  |       |       |
 | **4** |  *N*  |       |       |       |  *N*  |       |
+
+$(1,2)$ &rarr; Possible moves: $(0,2)$, $(1,1)$, $(1,0)$ or $(0,1)$ <br>
+$(2,1)$ &rarr; Possible moves: $(2,0)$, $(1,1)$, $(0,1)$ or $(1,0)$ <br>
+
+**Repeat similar steps to find out all P-positions and N-positions**
+|       | **0** | **1** | **2** | **3** | **4** | **5** |
+|-------|-------|-------|-------|-------|-------|-------|
+| **0** |***P***|  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |
+| **1** |  *N*  |  *N*  |***P***|  *N*  |  *N*  |  *N*  |
+| **2** |  *N*  |***P***|  *N*  |  *N*  |  *N*  |  *N*  |
+| **3** |  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |***P***|
+| **4** |  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |  *N*  |
+
+## Conclusion
+If there are 4 and 5 chips in the 1<sup>st</sup> and the 2<sup>nd</sup> pile,
+then the **P-positions** are $(0,0)$, $(1,2)$, $(2,1)$ and $(3,5)$,
+which means that our target is to remove certain amount of chips in order to reach a **P-position**,
+then our opponent can only move from **P-position** to a **N-position**, hence assuring us to have a winning move.
 
 [^1]: Wikipedia contributors. (2023). Wythoff’s game. Wikipedia. https://en.wikipedia.org/wiki/Wythoff%27s_game
 [^2]: Wikipedia contributors. (2023). Subtraction game. Wikipedia. https://en.wikipedia.org/wiki/Subtraction_game
