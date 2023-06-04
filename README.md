@@ -1,4 +1,4 @@
-# Analysis-of-Wythoff-Game
+# Analysis of Wythoff Game
 A MATLAB program related to Wythoff’s Game.
 
 ## Background
